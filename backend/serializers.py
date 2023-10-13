@@ -1,11 +1,5 @@
 from rest_framework import serializers
-from .models import UserType, User
-
-
-class UserTypeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = UserType
-        fields = ['url', 'type']
+from .models import User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

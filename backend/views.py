@@ -1,13 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import permissions
-from backend.models import UserType, User
-from backend.serializers import UserTypeSerializer, UserSerializer
-
-
-class UserTypeViewSet(viewsets.ModelViewSet):
-    queryset = UserType.objects.all()
-    serializer_class = UserTypeSerializer
-    permission_classes = [permissions.IsAuthenticated]
+from backend.models import User
+from backend.serializers import UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
