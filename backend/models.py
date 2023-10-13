@@ -36,4 +36,11 @@ class Coordinator(models.Model):
     
     class Meta:
         db_table = 'coordinators'
+
+class Teacher(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
     
+    class Meta:
+        db_table = 'teachers'
