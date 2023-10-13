@@ -1,0 +1,53 @@
+# Arquivos de Byte Python
+__pycache__/
+*.pyc
+
+# Ambiente Virtual
+venv/
+pyvenv.cfg
+
+# Arquivos de Log
+*.log
+
+# Arquivos de Backup
+*.bak
+*.swp
+
+# Arquivos de Configuração
+*.ini
+*.cfg
+*.conf
+
+# Arquivos de Dados
+*.db
+*.sqlite3
+
+# Arquivos de Cache
+__pycache__/
+.cached_data/
+*.cache
+
+# Arquivos de mídia gerados
+media/
+uploads/
+
+# Dependências (se você não estiver usando um gerenciador de dependências como Pipenv ou Poetry)
+# Certifique-se de atualizar isso com base em como você gerencia suas dependências.
+# Por exemplo, se você estiver usando pip, pode adicionar:
+# /requirements.txt
+
+# Arquivos de ambiente
+.env
+
+# Diretório de migrações
+/migrations/
+
+# Arquivos de configuração do IDE (se você usa um IDE específico)
+.idea/
+.vscode/
+
+# Outros arquivos de projeto específicos
+__init__.py
+
+# Adicione aqui quaisquer outros arquivos ou diretórios que você deseja excluir do controle de versão Git.
+
