@@ -44,3 +44,11 @@ class Teacher(models.Model):
     
     class Meta:
         db_table = 'teachers'
+
+class Student(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table = 'students'
