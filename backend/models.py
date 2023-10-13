@@ -13,8 +13,6 @@ class UserType(models.Model):
         default=1
     )
 
-    class Meta:
-        db_table = 'user_types'
 
 class User(models.Model):
     user_type = models.ForeignKey(
@@ -26,32 +24,24 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     birthday = models.DateField()
 
-    class Meta:
-        db_table = 'users'
 
 class Coordinator(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
     
-    class Meta:
-        db_table = 'coordinators'
 
 class Teacher(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
     
-    class Meta:
-        db_table = 'teachers'
 
 class Student(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
     
-    class Meta:
-        db_table = 'students'
 
 class Discipline(models.Model):
     name = models.CharField(max_length=30)
@@ -65,5 +55,3 @@ class Discipline(models.Model):
         Student,
         related_name='disciplines')
 
-    class Meta:
-        db_table = 'disciplines'
