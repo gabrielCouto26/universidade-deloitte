@@ -15,6 +15,14 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     birthday = models.DateField()
 
+    def create_user_profile(self):
+        if self.user_type == User.UserType.STUDENT:
+            Student.objects.create(user=self)
+        elif self.user_type == User.UserType.TEACHER:
+            Teacher.objects.create(user=self)
+        elif self.user_type == User.UserType.COORDINATOR:
+            Coordinator.objects.create(user=self)
+
 
 class Coordinator(models.Model):
     user = models.ForeignKey(
