@@ -15,3 +15,16 @@ class UserType(models.Model):
 
     class Meta:
         db_table = 'user_types'
+
+class User(models.Model):
+    user_type = models.ForeignKey(
+        UserType,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True)
+    email = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
+    birthday = models.DateField()
+
+    class Meta:
+        db_table = 'users'
