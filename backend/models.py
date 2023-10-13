@@ -52,3 +52,18 @@ class Student(models.Model):
     
     class Meta:
         db_table = 'students'
+
+class Discipline(models.Model):
+    name = models.CharField(max_length=30)
+    workload = models.IntegerField()
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True)
+    students = models.ManyToManyField(
+        Student,
+        related_name='disciplines')
+
+    class Meta:
+        db_table = 'disciplines'
