@@ -28,3 +28,12 @@ class User(models.Model):
 
     class Meta:
         db_table = 'users'
+
+class Coordinator(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table = 'coordinators'
+    
