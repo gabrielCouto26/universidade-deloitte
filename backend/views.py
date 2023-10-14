@@ -1,12 +1,11 @@
 from rest_framework import generics
-from backend.models import User, Student, Teacher, Coordinator, Discipline
-from backend.serializers import (
-    UserSerializer,
-    StudentSerializer,
-    TeacherSerializer,
-    CoordinatorSerializer,
-    DisciplineSerializer
-)
+from backend.models import User, Student, Teacher, Coordinator, Discipline, Grade
+from backend.serializers.user_serializer import UserSerializer
+from backend.serializers.student_serializer import StudentSerializer
+from backend.serializers.teacher_serializer import TeacherSerializer
+from backend.serializers.coordinator_serializer import CoordinatorSerializer
+from backend.serializers.discipline_serializer import DisciplineSerializer
+from backend.serializers.grade__serializer import GradeSerializer
 
 
 # User
@@ -62,3 +61,14 @@ class DisciplineList(generics.ListCreateAPIView):
 class DisciplineDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
+
+
+# Grade
+class GradeList(generics.ListCreateAPIView):
+    queryset = Grade.objects.all()
+    serializer_class = GradeSerializer
+
+
+class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Grade.objects.all()
+    serializer_class = GradeSerializer
