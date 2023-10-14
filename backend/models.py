@@ -18,3 +18,13 @@ class User(models.Model):
 
     class Meta:
         ordering = ['created']
+
+
+class Student(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created']
