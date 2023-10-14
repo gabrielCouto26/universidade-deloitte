@@ -48,3 +48,20 @@ class Coordinator(models.Model):
 
     class Meta:
         ordering = ['created']
+
+
+class Discipline(models.Model):
+    name = models.CharField(max_length=30)
+    workload = models.IntegerField()
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True)
+    students = models.ManyToManyField(
+        Student,
+        related_name='disciplines')
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created']
