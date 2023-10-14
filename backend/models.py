@@ -74,7 +74,7 @@ class Grade(models.Model):
         Student,
         on_delete=models.CASCADE,
         related_name='grades')
-    disciplines = models.ForeignKey(
+    discipline = models.ForeignKey(
         Discipline,
         on_delete=models.CASCADE,
         related_name='grades')
