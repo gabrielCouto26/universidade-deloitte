@@ -57,7 +57,8 @@ class Discipline(models.Model):
         Teacher,
         on_delete=models.SET_NULL,
         blank=True,
-        null=True)
+        null=True,
+        related_name='disciplines')
     students = models.ManyToManyField(
         Student,
         related_name='disciplines')
