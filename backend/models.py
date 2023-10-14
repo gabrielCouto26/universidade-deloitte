@@ -65,3 +65,15 @@ class Discipline(models.Model):
 
     class Meta:
         ordering = ['created']
+
+
+class Grade(models.Model):
+    value = models.FloatField()
+    student = models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE,
+        related_name='grades')
+    disciplines = models.ForeignKey(
+        Discipline,
+        on_delete=models.CASCADE,
+        related_name='grades')

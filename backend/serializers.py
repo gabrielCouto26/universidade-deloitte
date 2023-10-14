@@ -13,7 +13,7 @@ class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = ["id", "user", "created"]
+        fields = ["id", "user", "grades", "created"]
 
 
 class TeacherSerializer(serializers.ModelSerializer):
@@ -38,4 +38,13 @@ class DisciplineSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Discipline
-        fields = ["id", "name", "workload", "teacher", "students", "created"]
+        fields = ["id", "name", "workload", "teacher", "students", "grades", "created"]
+
+
+class GradeSerializer(serializers.ModelSerializer):
+    student = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
+    disciplin = serializers.PrimaryKeyRelatedField(queryset=Discipline.objects.all())
+
+    class Meta:
+        model = Discipline
+        fields = ["id", "value", "student", "discipline"]
