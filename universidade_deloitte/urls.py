@@ -15,9 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
+from rest_framework.authtoken import views
 
 urlpatterns = [
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include('backend.urls')),
-
+    path('token', views.obtain_auth_token),
 ]

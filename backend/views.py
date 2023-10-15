@@ -73,10 +73,10 @@ class DisciplineDetail(generics.RetrieveUpdateDestroyAPIView):
 class GradeList(generics.ListCreateAPIView):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
-    permission_classes = [IsStudent, IsTeacher]
+    permission_classes = [IsStudent | IsTeacher]
 
 
 class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
-    permission_classes = [IsStudent, IsTeacher]
+    permission_classes = [IsStudent | IsTeacher]
