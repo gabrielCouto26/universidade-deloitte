@@ -10,7 +10,7 @@ from backend.serializers.student_serializer import StudentSerializer
 from backend.serializers.teacher_serializer import TeacherSerializer
 from backend.serializers.coordinator_serializer import CoordinatorSerializer
 from backend.serializers.discipline_serializer import DisciplineSerializer
-from backend.serializers.grade__serializer import GradeSerializer
+from backend.serializers.grade_serializer import GradeSerializer
 from backend.permissions import IsStudent, IsTeacher, IsCoordinator
 
 
