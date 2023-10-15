@@ -1,12 +1,14 @@
 from rest_framework import serializers
-from backend.models.student import Student
-from backend.models.teacher import Teacher
 from backend.models.discipline import Discipline
+from backend.serializers.teacher_serializer import TeacherSerializer
+from backend.serializers.student_serializer import StudentSerializer
+from backend.serializers.grade__serializer import GradeSerializer
 
 
 class DisciplineSerializer(serializers.ModelSerializer):
-    teacher = serializers.PrimaryKeyRelatedField(queryset=Teacher.objects.all())
-    students = serializers.PrimaryKeyRelatedField(many=True, queryset=Student.objects.all())
+    teacher = TeacherSerializer()
+    students = StudentSerializer(many=True)
+    grades = GradeSerializer(many=True)
 
     class Meta:
         model = Discipline

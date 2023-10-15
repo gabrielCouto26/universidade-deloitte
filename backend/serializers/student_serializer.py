@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from backend.models.user import User
 from backend.models.student import Student
+from backend.serializers.user_serializer import UserSerializer
 
 
 class StudentSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    user = UserSerializer()
 
     class Meta:
         model = Student
-        fields = ["id", "user", "disciplines", "grades", "created"]
+        fields = ["id", "user", "created"]
