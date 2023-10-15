@@ -11,7 +11,12 @@ from backend.serializers.teacher_serializer import TeacherSerializer
 from backend.serializers.coordinator_serializer import CoordinatorSerializer
 from backend.serializers.discipline_serializer import DisciplineSerializer
 from backend.serializers.grade_serializer import GradeSerializer
-from backend.permissions import IsStudent, IsTeacher, IsCoordinator
+from backend.permissions import (
+    IsStudent,
+    IsTeacher,
+    IsCoordinator,
+    CanList,
+    CanShowGrade)
 
 
 # User
@@ -73,10 +78,31 @@ class DisciplineDetail(generics.RetrieveUpdateDestroyAPIView):
 class GradeList(generics.ListCreateAPIView):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
-    permission_classes = [IsCoordinator | IsStudent | IsTeacher]
+    permission_classes = [IsCoordinator, CanList]
 
 
 class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
-    permission_classes = [IsCoordinator | IsStudent | IsTeacher]
+    permission_classes = [IsStudent | IsTeacher, CanShowGrade]
+
+
+# Student Grades
+class StudentGradeList(generics.ListCreateAPIView):
+    serializer_class = GradeSerializer
+    permission_classes = [IsStudent, CanList]
+
+    def get_queryset(self):
+        user = User.objects.get(email=self.request.user.username)
+        return Grade.objects.filter(student__user=user)
+
+
+# Teacher Grades
+class TeacherGradeList(generics.ListCreateAPIView):
+    serializer_class = GradeSerializer
+    permission_classes = [IsTeacher, CanList]
+
+    def get_queryset(self):
+        user = User.objects.get(email=self.request.user.username)
+        return Grade.objects.filter(
+            discipline__teacher__user=user)
