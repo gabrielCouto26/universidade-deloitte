@@ -1,5 +1,10 @@
 from rest_framework import generics
-from backend.models import User, Student, Teacher, Coordinator, Discipline, Grade
+from backend.models.user import User
+from backend.models.student import Student
+from backend.models.teacher import Teacher
+from backend.models.coordinator import Coordinator
+from backend.models.discipline import Discipline
+from backend.models.grade import Grade
 from backend.serializers.user_serializer import UserSerializer
 from backend.serializers.student_serializer import StudentSerializer
 from backend.serializers.teacher_serializer import TeacherSerializer

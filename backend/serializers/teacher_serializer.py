@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from backend.models import User, Teacher
+from backend.models.user import User
+from backend.models.teacher import Teacher
 
 
 class TeacherSerializer(serializers.ModelSerializer):

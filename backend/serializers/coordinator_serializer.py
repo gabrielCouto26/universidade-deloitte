@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from backend.models import User, Coordinator
+from backend.models.user import User
+from backend.models.coordinator import Coordinator
 
 
 class CoordinatorSerializer(serializers.ModelSerializer):
