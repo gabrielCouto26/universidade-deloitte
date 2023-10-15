@@ -11,6 +11,9 @@ urlpatterns = [
 
     path('disciplines/', views.DisciplineList.as_view()),
     path('disciplines/<int:pk>', views.DisciplineDetail.as_view()),
+
+    path('grades/', views.GradeList.as_view()),
+    path('grades/<int:pk>', views.GradeDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
