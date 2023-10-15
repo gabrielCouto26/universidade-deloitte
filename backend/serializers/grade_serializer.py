@@ -10,6 +10,14 @@ class GradeSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
     discipline = serializers.PrimaryKeyRelatedField(queryset=Discipline.objects.all())
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['student'] = StudentSerializer(
+            instance.student).data.get('user').get('name')
+        data['discipline'] = DisciplineSerializer(
+            instance.discipline).data.get('name')
+        return data
+
     class Meta:
         model = Grade
         fields = ["id", "value", "student", "discipline"]
