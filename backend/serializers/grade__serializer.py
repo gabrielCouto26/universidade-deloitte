@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from backend.models.student import Student
 from backend.models.discipline import Discipline
+from backend.models.grade import Grade
 
 
 class GradeSerializer(serializers.ModelSerializer):
@@ -8,5 +9,5 @@ class GradeSerializer(serializers.ModelSerializer):
     discipline = serializers.PrimaryKeyRelatedField(queryset=Discipline.objects.all())
 
     class Meta:
-        model = Discipline
+        model = Grade
         fields = ["id", "value", "student", "discipline"]
