@@ -14,6 +14,12 @@ class User(models.Model):
     email = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=50)
     birthday = models.DateField()
+    auth_user = models.ForeignKey(
+        'auth.User',
+        related_name='user',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
