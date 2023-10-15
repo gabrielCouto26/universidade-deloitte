@@ -17,5 +17,15 @@ class Discipline(models.Model):
         related_name='disciplines')
     created = models.DateTimeField(auto_now_add=True)
 
+    def get_grade(self):
+        grades = []
+        for g in self.grades.all():
+            grades.append({
+                "id": g.id,
+                "value": g.value,
+                "student": g.student.user.name,
+            })
+        return grades
+
     class Meta:
         ordering = ['created']
