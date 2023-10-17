@@ -4,6 +4,9 @@ from django.contrib.auth.models import User as AuthUser
 
 
 class UserSerializer(serializers.ModelSerializer):
+    permissions = serializers.PrimaryKeyRelatedField(
+        many=True,
+        read_only=True)
 
     def create(self, validated_data):
         auth_data = {
@@ -15,4 +18,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "user_type", "email", "name", "birthday", "created"]
+        fields = ["id", "user_type", "email", "name", "birthday", "permissions", "created"]
