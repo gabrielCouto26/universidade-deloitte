@@ -3,12 +3,12 @@ from django.db import models
 
 class Permission(models.Model):
     RESOURCE_CHOICES = [
-        ('USER', 'User'),
-        ('STUDENT', 'Student'),
-        ('TEACHER', 'Teacher'),
-        ('COORDINATOR', 'Coordinator'),
-        ('DISCIPLINE', 'Discipline'),
-        ('GRADE', 'Grade'),
+        (1, 'User'),
+        (2, 'Student'),
+        (3, 'Teacher'),
+        (4, 'Coordinator'),
+        (5, 'Discipline'),
+        (6, 'Grade'),
     ]
 
     resource = models.CharField(max_length=20, choices=RESOURCE_CHOICES)

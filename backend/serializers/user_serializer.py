@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from backend.models.user import User
+from backend.serializers.permission_serializer import PermissionSerializer
 from django.contrib.auth.models import User as AuthUser
 
 
@@ -15,6 +16,11 @@ class UserSerializer(serializers.ModelSerializer):
         }
         validated_data['auth_user'] = AuthUser.objects.create_user(**auth_data)
         return User.objects.create(**validated_data)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['permissions'] = PermissionSerializer(instance.permissions.all(), many=True).data
+        return data
 
     class Meta:
         model = User
