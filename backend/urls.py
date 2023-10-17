@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from backend.views.home import HomeView
+from backend.views.user import UserInfoView
 from backend.views.student import StudentList, StudentDetail, StudentGradeList
 from backend.views.teacher import TeacherList, TeacherDetail, TeacherGradeList
 from backend.views.discipline import DisciplineList, DisciplineDetail
@@ -9,6 +10,8 @@ from backend.views.grade import GradeList, GradeDetail
 
 urlpatterns = [
     path('home', HomeView.as_view(), name='home'),
+
+    path('user-info', UserInfoView.as_view(), name='user-info'),
 
     path('students/', StudentList.as_view(), name='students'),
     path('students/<int:pk>', StudentDetail.as_view(), name='student'),
