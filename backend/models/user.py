@@ -1,4 +1,5 @@
 from django.db import models
+from backend.models.permission import Permission
 
 
 class User(models.Model):
@@ -20,6 +21,7 @@ class User(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True)
+    permissions = models.ManyToManyField(Permission)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
