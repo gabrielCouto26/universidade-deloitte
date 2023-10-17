@@ -25,7 +25,7 @@ class UserInfoView(generics.RetrieveAPIView):
             'email': user.email,
             'name': user.name,
             'birthday': user.birthday,
-            'user_type': user.user_type,
+            'user_type': user.get_user_type_display(),
             'permissions': [],
         }
 
