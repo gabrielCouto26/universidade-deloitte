@@ -4,12 +4,17 @@ from backend.models.user import User
 from backend.models.grade import Grade
 from backend.serializers.student_serializer import StudentSerializer
 from backend.serializers.grade_serializer import GradeSerializer
-from backend.permissions import IsStudent, CanList
+from backend.permissions import (
+    IsCoordinator,
+    IsTeacher,
+    IsStudent,
+    CanList)
 
 
 class StudentList(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [IsCoordinator | IsTeacher, CanList]
 
 
 class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
