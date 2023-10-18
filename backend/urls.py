@@ -3,7 +3,11 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from backend.views.home import HomeView
 from backend.views.user import UserInfoView
 from backend.views.student import StudentList, StudentDetail, StudentGradeList
-from backend.views.teacher import TeacherList, TeacherDetail, TeacherGradeList
+from backend.views.teacher import (
+    TeacherList,
+    TeacherDetail,
+    TeacherGradeList,
+    TeacherDisciplineList)
 from backend.views.discipline import DisciplineList, DisciplineDetail
 from backend.views.grade import GradeList, GradeDetail
 
@@ -20,6 +24,7 @@ urlpatterns = [
     path('teachers/', TeacherList.as_view(), name='teachers'),
     path('teachers/<int:pk>', TeacherDetail.as_view(), name='teacher'),
     path('teachers/grades', TeacherGradeList.as_view(), name='teacher-grades'),
+    path('teachers/disciplines', TeacherDisciplineList.as_view(), name='teacher-disciplines'),
 
     path('disciplines/', DisciplineList.as_view(), name='disciplines'),
     path('disciplines/<int:pk>', DisciplineDetail.as_view(), name='discipline'),
