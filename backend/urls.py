@@ -8,7 +8,10 @@ from backend.views.teacher import (
     TeacherDetail,
     TeacherGradeList,
     TeacherDisciplineList)
-from backend.views.discipline import DisciplineList, DisciplineDetail
+from backend.views.discipline import (
+    DisciplineList,
+    DisciplineDetail,
+    DisciplineStudentList)
 from backend.views.grade import GradeList, GradeDetail
 
 
@@ -28,6 +31,7 @@ urlpatterns = [
 
     path('disciplines/', DisciplineList.as_view(), name='disciplines'),
     path('disciplines/<int:pk>', DisciplineDetail.as_view(), name='discipline'),
+    path('disciplines/<int:pk>/students', DisciplineStudentList.as_view(), name='discipline-students'),
 
     path('grades/', GradeList.as_view(), name='grades'),
     path('grades/<int:pk>', GradeDetail.as_view(), name='grade'),
