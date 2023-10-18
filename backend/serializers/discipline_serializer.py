@@ -1,22 +1,17 @@
 from rest_framework import serializers
 from backend.models.discipline import Discipline
-from backend.models.teacher import Teacher
-from backend.models.student import Student
-from backend.serializers.teacher_serializer import TeacherSerializer
-from backend.serializers.student_serializer import StudentSerializer
 
 
 class DisciplineSerializer(serializers.ModelSerializer):
-    teacher = serializers.PrimaryKeyRelatedField(queryset=Teacher.objects.all())
-    students = serializers.PrimaryKeyRelatedField(many=True, queryset=Student.objects.all())
+    teacher = serializers.SerializerMethodField()
+    students = serializers.SerializerMethodField()
     grades = serializers.ReadOnlyField(source='get_grade')
 
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        data['teacher'] = TeacherSerializer(instance.teacher).data
-        data['students'] = [
-            StudentSerializer(student).data for student in instance.students.all()]
-        return data
+    def get_teacher(self, obj):
+        return obj.teacher.user.name if obj.teacher and obj.teacher.user else None
+
+    def get_students(self, obj):
+        return obj.students.count()
 
     class Meta:
         model = Discipline
