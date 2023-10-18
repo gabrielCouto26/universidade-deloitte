@@ -12,7 +12,7 @@ from backend.permissions import (
 class GradeList(generics.ListCreateAPIView):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
-    permission_classes = [IsCoordinator, CanList]
+    permission_classes = [IsCoordinator | IsTeacher]
 
 
 class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
