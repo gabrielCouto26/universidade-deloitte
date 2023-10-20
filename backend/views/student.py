@@ -14,7 +14,7 @@ from backend.permissions import (
 class StudentList(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    permission_classes = [IsCoordinator | IsTeacher, CanList]
+    permission_classes = [IsCoordinator | IsTeacher]
 
 
 class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
