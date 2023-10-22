@@ -11,7 +11,7 @@ class StudentSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user')
         user = UserSerializer.create(self, validated_data=user_data)
 
-        permission = Permission.objects.get(id=17)
+        permission = Permission.objects.get(id=18)
         user.permissions.add(permission)  # Permissão apenas para leitura de GRADE
 
         return Student.objects.create(user=user, **validated_data)
